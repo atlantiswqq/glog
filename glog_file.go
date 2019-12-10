@@ -44,7 +44,11 @@ func createLogDirs() {
 	if *logDir != "" {
 		logDirs = append(logDirs, *logDir)
 	}
-	logDirs = append(logDirs, os.TempDir())
+	privatePath,err:=os.Getwd()
+	if err !=nil{
+		panic("init log path error")
+	}
+	logDirs = append(logDirs, privatePath)
 }
 
 var (
